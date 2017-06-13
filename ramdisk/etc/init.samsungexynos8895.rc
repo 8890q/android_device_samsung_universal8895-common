@@ -145,6 +145,9 @@ on post-fs-data
     chown wifi root /efs/wifi/.mac.cob
     chmod 0664 /efs/wifi/.mac.cob
 
+    # Set HW revision prop to one set by bootloader
+    setprop ro.boot.hardware.revision ${ro.revision}
+
 on boot
 # SSWAP
     write /proc/sys/vm/swappiness 160
