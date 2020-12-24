@@ -25,6 +25,9 @@ on init
     mount tmpfs tmpfs /mnt/secure/asec mode=0700,uid=0,gid=0
     restorecon_recursive /mnt/secure/asec
 
+    # Fastcharge switch
+    chown system radio /sys/class/sec/switch/afc_disable
+
     # reset_reason
     chown system system /proc/reset_reason
     chmod 0600 /proc/reset_reason
@@ -370,7 +373,6 @@ on boot
     chown system radio /sys/class/sec/switch/uart_en
     chown system radio /sys/class/sec/switch/otg_test
     chown system radio /sys/class/sec/switch/apo_factory
-    chown system radio /sys/class/sec/switch/afc_disable
     chown system radio /sys/class/sec/switch/hiccup
     chown system radio /sys/class/sec/switch/jig_disable	
 
