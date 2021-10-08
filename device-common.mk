@@ -58,6 +58,11 @@ TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 TARGET_SCREEN_HEIGHT := 2960
 TARGET_SCREEN_WIDTH := 1440
 
+# Control groups and task profiles
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/cgroups.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
+    $(COMMON_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
+
 # Graphics
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := xlarge
