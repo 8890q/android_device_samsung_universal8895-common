@@ -1,3 +1,6 @@
+# BPF
+ro.kernel.ebpf.supported=false
+
 # LMK
 ro.cfg.enable_userspace_lmk=true
 ro.cfg.kill_heaviest_task=true
