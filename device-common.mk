@@ -94,7 +94,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.samsung
+    android.hardware.biometrics.fingerprint@2.3-service.samsung
 
 # Flat device tree for boot image
 PRODUCT_HOST_PACKAGES += \
@@ -123,7 +123,9 @@ PRODUCT_COPY_FILES += \
 
 # Keylayout
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/keylayout/gpio_keys.kl:system/usr/keylayout/gpio_keys.kl
+    $(COMMON_PATH)/keylayout/gpio_keys.kl:system/usr/keylayout/gpio_keys.kl \
+    $(COMMON_PATH)/keylayout/uinput-sec-fp.kl:system/usr/keylayout/uinput-sec-fp.kl
+
 
 # keymaster
 PRODUCT_PACKAGES += \
