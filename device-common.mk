@@ -228,6 +228,7 @@ PRODUCT_PACKAGES += \
     fstab.samsungexynos8895 \
     init.baseband.rc \
     init.samsung.rc \
+    init.vendor.rilcommon.rc \
     init.samsungexynos8895.rc \
     init.samsungexynos8895.usb.rc \
     mobicore.rc \
@@ -246,7 +247,8 @@ PRODUCT_PACKAGES += \
     android.hardware.radio@1.2 \
     android.hardware.radio@1.3 \
     android.hardware.radio@1.4 \
-    libxml2
+    libxml2 \
+    secril_config_svc
 
 # SamsungDoze
 PRODUCT_PACKAGES += \
