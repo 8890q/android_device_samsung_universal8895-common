@@ -34,7 +34,6 @@ PRODUCT_PACKAGES += \
     libeffects \
     libspeexresampler \
     libaudioutils \
-    audio.a2dp.default \
     libtinycompress
 
 PRODUCT_PACKAGES += \
