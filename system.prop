@@ -53,3 +53,8 @@ ro.vndk.version=24
 # SoC
 ro.soc.manufacturer=Samsung
 ro.soc.model=Exynos 8895
+
+# zram
+ro.zram.mark_idle_delay_mins=60
+ro.zram.first_wb_delay_mins=1440
+ro.zram.periodic_wb_delay_hours=24
