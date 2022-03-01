@@ -38,6 +38,9 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     libtinycompress
 
+PRODUCT_PACKAGES += \
+    SamsungDAP
+
 TARGET_EXCLUDES_AUDIOFX := true
 
 PRODUCT_COPY_FILES += \
