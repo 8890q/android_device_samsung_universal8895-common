@@ -75,8 +75,7 @@ PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 # Camera
 PRODUCT_PACKAGES += \
     camera.universal8895 \
-    android.hardware.camera.provider@2.5-service \
-    Snap
+    android.hardware.camera.provider@2.5-service
 
 # Camera configurations
 PRODUCT_COPY_FILES += \
