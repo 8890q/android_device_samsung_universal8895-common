@@ -38,6 +38,8 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     libtinycompress
 
+TARGET_EXCLUDES_AUDIOFX := true
+
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(COMMON_PATH)/configs/audio/mixer_gains.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/mixer_gains.xml \
