@@ -92,3 +92,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # HWC
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.disable_hwc=1
+
+# Telephony
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.telephony.default_network=10,10
