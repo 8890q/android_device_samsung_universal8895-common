@@ -93,6 +93,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.disable_hwc=1
 
+# WiFi Display
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.wfdsupport=1
+
 # Telephony
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.telephony.default_network=10,10
