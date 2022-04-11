@@ -142,6 +142,9 @@ BOARD_HAVE_SAMSUNG_WIFI          := true
 BOARD_SEPOLICY_DIRS += device/samsung/universal8895-common/sepolicy
 BOARD_SEPOLICY_VERS := $(PLATFORM_SDK_VERSION).0
 
+# Ril
+ENABLE_VENDOR_RIL_SERVICE := true
+
 # Shims
 TARGET_LD_SHIM_LIBS += \
     /system/lib/libexynoscamera.so|/vendor/lib/libexynoscamera_shim.so \
