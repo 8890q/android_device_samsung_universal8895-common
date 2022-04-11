@@ -963,7 +963,7 @@ service faced /system/bin/faced
     group system
 
 on property:sys.boot_completed=1
-    swapon_all /fstab.${ro.hardware}
+    swapon_all /vendor/etc/fstab.samsungexynos8895
     setprop security.semdaemonfinish 0
     start sem_daemon
     # Change permission for A-Box firmware logs file & GPR dump
