@@ -14,15 +14,15 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/universal8895-common
+COMMON_PATH := device/samsung/universal8895-common
 
 BUILD_BROKEN_DUP_RULES := true
 
 # Include path
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_PATH)/bluetooth
 
 # Firmware
 TARGET_NO_BOOTLOADER := true
@@ -92,7 +92,7 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 
 # Manifest
 PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
-DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
+DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
 
 # Exclude AudioFX
 TARGET_EXCLUDES_AUDIOFX := true
@@ -110,14 +110,14 @@ OVERRIDE_RS_DRIVER := libRSDriverArm.so
 TARGET_POWERHAL_VARIANT := samsung
 
 # Bluetooth
-BOARD_CUSTOM_BT_CONFIG := $(LOCAL_PATH)/bluetooth/libbt_vndcfg.txt
+BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/bluetooth/libbt_vndcfg.txt
 BOARD_HAVE_BLUETOOTH := true
 
 # Backlight
 BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/ramdisk/etc/fstab.samsungexynos8895
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/ramdisk/etc/fstab.samsungexynos8895
 
 # Wifi
 TARGET_USES_64_BIT_BCMDHD        := true
@@ -151,4 +151,4 @@ TARGET_LD_SHIM_LIBS += \
     /system/lib64/libexynoscamera.so|/vendor/lib64/libexynoscamera_shim.so
 
 # Soong namespaces
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
+PRODUCT_SOONG_NAMESPACES += $(COMMON_PATH)
