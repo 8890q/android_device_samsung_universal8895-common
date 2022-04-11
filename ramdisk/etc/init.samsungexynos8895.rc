@@ -44,6 +44,9 @@ on post-fs-data
     write /dev/freezer/frozen/freezer.state FROZEN
     write /dev/freezer/thaw/freezer.state THAWED
 
+# Gatekeeper wants this
+    mkdir /data/vendor/gatekeeper 0770 system system
+
 # MARs for freecess
     chown system system /dev/freezer
     chown system system /dev/freezer/frozen
