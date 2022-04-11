@@ -23,16 +23,8 @@
 # zram
 /dev/block/zram0            u:object_r:swap_block_device:s0
 
-/dev/block/platform/11120000\.ufs/by-name/CACHE         u:object_r:cache_block_device:s0
-/dev/block/platform/11120000\.ufs/by-name/CPEFS         u:object_r:efs_block_device:s0
-/dev/block/platform/11120000\.ufs/by-name/EFS           u:object_r:efs_block_device:s0
 /dev/block/platform/11120000\.ufs/by-name/KEYREFUGE     u:object_r:keyrefuge_block_device:s0
-/dev/block/platform/11120000\.ufs/by-name/MISC          u:object_r:misc_block_device:s0
-/dev/block/platform/11120000\.ufs/by-name/OMR           u:object_r:omr_block_device:s0
-/dev/block/platform/11120000\.ufs/by-name/PERSISTENT    u:object_r:frp_block_device:s0
-/dev/block/platform/11120000\.ufs/by-name/RADIO         u:object_r:radio_block_device:s0
 /dev/block/platform/11120000\.ufs/by-name/SYSTEM        u:object_r:system_block_device:s0
-/dev/block/platform/11120000\.ufs/by-name/USERDATA      u:object_r:userdata_block_device:s0
 
 ####################################
 # efs files
@@ -56,17 +48,11 @@
 # data files
 /data/nfc(/.*)?                    u:object_r:nfc_data_file:s0
 
-/data/misc/radio(/.*)?             u:object_r:radio_data_file:s0
-
-# livedisplay
-/data/vendor/display(/.*)?         u:object_r:display_vendor_data_file:s0
-
 # drm
 /data/vendor/mediadrm(/.*)?        u:object_r:mediadrm_data_file:s0
 
 # mobicore
 /data/misc/mcRegistry(/.*)?        u:object_r:mobicore_data_file:s0
-/data/vendor/mcRegistry(/.*)?      u:object_r:mobicore_vendor_data_file:s0
 
 # camera
 /data/camera(/.*)?                 u:object_r:camera_data_file:s0
@@ -146,14 +132,6 @@
 ### VENDOR
 /(vendor|system/vendor)/bin/vendor\.samsung\.hardware\.security\.widevine\.keyprovisioning@[0-9]\.[0-9]-service    u:object_r:hal_drm_widevine_exec:s0
 
-/(vendor|system/vendor)/bin/hw/gpsd          u:object_r:gpsd_exec:s0
-/(vendor|system/vendor)/bin/hw/lhd           u:object_r:lhd_exec:s0
-/(vendor|system/vendor)/bin/hw/macloader     u:object_r:macloader_exec:s0
-/(vendor|system/vendor)/bin/mcDriverDaemon   u:object_r:tee_exec:s0
-
-/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@[0-9]\.[0-9]-service\.clearkey    u:object_r:hal_drm_clearkey_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@[0-9]\.[0-9]-service\.widevine    u:object_r:hal_drm_widevine_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.keymaster@[0-9]\.[0-9]-service\.samsung    u:object_r:hal_keymaster_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.usb@[0-9]\.[0-9]-service\.basic    u:object_r:hal_usb_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.camera\.provider@[0-9]\.[0-9]-service    u:object_r:hal_camera_default_exec:s0
 /(vendor|system/vendor)/bin/hw/sec\.android\.hardware\.nfc@[0-9]\.[0-9]-service    u:object_r:hal_nfc_default_exec:s0
