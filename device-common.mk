@@ -29,6 +29,8 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@2.0-service \
     android.hardware.soundtrigger@2.0-service \
     android.hardware.soundtrigger@2.0-impl \
+    audio.r_submix.default \
+    audio.usb.default \
     libalsautils \
     libeffects \
     libspeexresampler \
@@ -41,6 +43,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio/mixer_gains.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/mixer_gains.xml \
     $(COMMON_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/mixer_paths.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
