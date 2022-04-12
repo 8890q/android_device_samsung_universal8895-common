@@ -4,7 +4,6 @@ etc/apns-conf.xml
 # Audio
 lib/hw/audio.playback_record.default.so
 lib/hw/audio.primary.universal8895.so
-lib/hw/audio.tms.default.so
 lib/libSamsungPostProcessConvertor.so
 lib/lib_SamsungRec_06006.so
 lib/lib_SoundAlive_SRC384_ver320.so
@@ -62,7 +61,6 @@ vendor/lib64/libbt-vendor.so
 product/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
 
 # DRM
-vendor/lib/liboemcrypto.so
 vendor/lib/mediadrm/libwvdrmengine.so
 
 # DRM - Widevine

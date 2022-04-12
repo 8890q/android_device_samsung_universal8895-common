@@ -299,7 +299,7 @@ PRODUCT_PACKAGES += \
 
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2020-04-01
+    ro.lineage.build.vendor_security_patch=2021-04-01
 
 # Protobuf
 PRODUCT_COPY_FILES += \
