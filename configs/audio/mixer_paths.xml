@@ -1,5 +1,5 @@
 <mixer>
-	<include name="/system/etc/mixer_gains.xml" />
+	<include name="/vendor/etc/mixer_gains.xml" />
 
 	<pcmdai playback_link="0" />
 	<pcmdai playback_low_link="2" />
@@ -98,7 +98,7 @@
 
 	<ctl name="HPOUT3 Digital Switch" value="1" />
 	<ctl name="HPOUT3L Input 1" value="None" />
-	<ctl name="HPOUT3R Input 1" value="None" />
+	<ctl name="HPOUT3L Input 2" value="None" />
 	<ctl name="OUT3 Demux" value="HPOUT3" />
 
 	<ctl name="DMIC1 Switch" value="0" />
@@ -231,7 +231,13 @@
 	<!-- output device -->
 	<path name="dev-handset">
 		<ctl name="HPOUT3L Input 1" value="AIF1RX1" />
-		<ctl name="HPOUT3R Input 1" value="AIF1RX2" />
+		<ctl name="HPOUT3L Input 2" value="AIF1RX2" />
+		<ctl name="OUT3 Demux" value="HPOUT4" />
+	</path>
+
+	<path name="dev-handset-left-ch">
+		<ctl name="HPOUT3L Input 1" value="AIF1RX1" />
+		<ctl name="HPOUT3L Input 2" value="None" />
 		<ctl name="OUT3 Demux" value="HPOUT4" />
 	</path>
 
@@ -241,6 +247,10 @@
 	<path name="dev-headset">
 		<ctl name="HPOUT2L Input 1" value="AIF1RX1" />
 		<ctl name="HPOUT2R Input 1" value="AIF1RX2" />
+	</path>
+
+	<path name="dev-headphone">
+		<path name="dev-headset" />
 	</path>
 
 	<path name="dev-speaker-headset">
@@ -304,8 +314,13 @@
 		<path name="dev-handset" />
 	</path>
 
+	<path name="media-handset-left-ch">
+		<path name="route-playback" />
+		<path name="dev-handset-left-ch" />
+	</path>
+
 	<path name="factory-media-handset">
-		<path name="media-handset" />
+		<path name="media-handset-left-ch" />
 	</path>
 
 	<path name="media-speaker">
@@ -316,6 +331,10 @@
 	<path name="media-headset">
 		<path name="route-playback" />
 		<path name="dev-headset" />
+	</path>
+
+	<path name="media-headphone">
+		<path name="media-headset" />
 	</path>
 
 	<path name="media-dsd64-headset">
@@ -359,6 +378,10 @@
 		<path name="dev-speaker-headset" />
 	</path>
 
+	<path name="media-speaker-headphone">
+		<path name="media-speaker-headset" />
+	</path>
+
 	<path name="media-bt-sco-headset">
 		<path name="route-bt-sco-playback" />
 	</path>
@@ -370,7 +393,7 @@
 
 	<!-- Ringtone playback -->
 	<path name="ringtone-handset">
-		<path name="media-handset" />
+		<path name="media-handset-left-ch" />
 	</path>
 
 	<path name="ringtone-speaker">
@@ -385,6 +408,9 @@
 		<path name="media-speaker-headset" />
 	</path>
 
+	<path name="ringtone-speaker-headphone">
+		<path name="media-speaker-headphone" />
+	</path>
 	<path name="ringtone-bt-sco-headset">
 		<path name="media-bt-sco-headset" />
 	</path>
@@ -395,15 +421,17 @@
 
 	<!-- Communication playback -->
 	<path name="communication-handset">
-		<path name="media-handset" />
+		<path name="media-handset-left-ch" />
 	</path>
 
 	<path name="communication-speaker">
-		<path name="media-speaker" />
+		<path name="route-spkamp-playback" />
+		<path name="dev-speaker" />
 	</path>
 
 	<path name="communication-dex-speaker">
-		<path name="media-speaker" />
+		<path name="route-spkamp-playback" />
+		<path name="dev-speaker" />
 	</path>
 
 	<path name="communication-headset">
@@ -548,7 +576,7 @@
 	<!-- NB -->
 	<path name="incall_nb-handset">
 		<path name="route-playback" />
-		<path name="dev-handset" />
+		<path name="dev-handset-left-ch" />
 	</path>
 
 	<path name="incall_nb-speaker">
@@ -770,7 +798,7 @@
 
 	<!-- Realtime Loopback -->
 	<path name="realtimeloopback-handset">
-		<path name="media-handset" />
+		<path name="media-handset-left-ch" />
 	</path>
 
 	<path name="realtimeloopback-speaker">
@@ -800,7 +828,7 @@
 
 	<!-- AP TTY Mode -->
 	<path name="ap_tty_mode-handset">
-		<path name="media-handset" />
+		<path name="media-handset-left-ch" />
 	</path>
 
 	<path name="ap_tty_mode-headset">
@@ -813,7 +841,7 @@
 
 	<!-- echo(rms) test output -->	
 	<path name="echo_test-handset">
-		<path name="media-handset" />
+		<path name="media-handset-left-ch" />
 	</path>
 
 	<path name="echo_test-speaker">
