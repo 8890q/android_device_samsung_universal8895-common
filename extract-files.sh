@@ -69,6 +69,10 @@ sed -i -z "s/    setprop wifi.interface wlan0\n\n/    setprop wifi.interface wla
 # replace SSLv3_client_method with SSLv23_method
 sed -i "s/SSLv3_client_method/SSLv23_method\x00\x00\x00\x00\x00\x00/" $BLOB_ROOT/vendor/bin/hw/gpsd
 
+# Audio hal bt sco shim
+"${PATCHELF}" --add-needed libaudioparams_shim.so $BLOB_ROOT/lib/hw/audio.primary.exynos8895.so
+sed -i 's/str_parms_get_str/str_parms_get_mod/g' $BLOB_ROOT/lib/hw/audio.primary.exynos8895.so
+
 # Remove libhidltransport dependencie
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib/android.hardware.bluetooth.a2dp@1.0.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib/android.hardware.gnss@1.0.so
@@ -133,6 +137,6 @@ sed -i "s/SSLv3_client_method/SSLv23_method\x00\x00\x00\x00\x00\x00/" $BLOB_ROOT
 "${PATCHELF}" --replace-needed libvndsecril-client.so libsecril-client.so $BLOB_ROOT/vendor/lib/libwrappergps.so
 "${PATCHELF}" --replace-needed libvndsecril-client.so libsecril-client.so $BLOB_ROOT/vendor/lib64/libwrappergps.so
 "${PATCHELF}" --replace-needed libvndsecril-client.so libsecril-client.so $BLOB_ROOT/lib/libaudio-ril.so
-"${PATCHELF}" --replace-needed libvndsecril-client.so libsecril-client.so $BLOB_ROOT/lib/hw/audio.primary.universal8895.so
+"${PATCHELF}" --replace-needed libvndsecril-client.so libsecril-client.so $BLOB_ROOT/lib/hw/audio.primary.exynos8895.so
 
 "${MY_DIR}/setup-makefiles.sh"
