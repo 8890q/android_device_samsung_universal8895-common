@@ -77,6 +77,9 @@ sed -i "s/SSLv3_client_method/SSLv23_method\x00\x00\x00\x00\x00\x00/" $BLOB_ROOT
 "${PATCHELF}" --add-needed libaudioparams_shim.so $BLOB_ROOT/lib/hw/audio.primary.exynos8895.so
 sed -i 's/str_parms_get_str/str_parms_get_mod/g' $BLOB_ROOT/lib/hw/audio.primary.exynos8895.so
 
+# Audio Drop SoundTrigger HAL
+"${PATCHELF}" --remove-needed libaudio_soundtrigger.so $BLOB_ROOT/lib/hw/audio.primary.exynos8895.so
+
 # Remove libhidltransport dependencie
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib/android.hardware.bluetooth.a2dp@1.0.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib/android.hardware.gnss@1.0.so

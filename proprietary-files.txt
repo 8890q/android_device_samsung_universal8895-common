@@ -17,10 +17,8 @@ lib/libsecaudioinfo.so|36253302450c7e828b72836461d370cb66b8632aae32fc16167583c1f
 lib/libtinyalsa.so|addba4b1c484684685ec68e7b892952b8748c49204119589a2f8afb67654405a
 lib64/libsecaudioinfo.so|dd7f133e3e70fe5c1a6c9252d917e08f3ae5ba7cdff7dddb6e116bc16a9d550c
 lib64/libtinyalsa.so|59699ad04fb9d766c0effa6fe6dafca34005b29873dd546c2d531456cf3ecb5a
-vendor/lib/hw/sound_trigger.primary.universal8895.so|819954e672da7d81aa624e435d3c9dc630580b0baebe9c195bf45234ad169886
 vendor/lib/lib_SoundAlive_3DPosition_ver202.so|c9a2eec02cb518b0d11234f8a72f36ac31667ae75cf45111c65fdf746e5ce161
 vendor/lib/libaboxpcmdump.so|247d47e5f9d4faf9c4d0d488c5c23be8090b6a17ec371ee68f6e739f5b31ba9e
-vendor/lib/libaudio_soundtrigger.so|a036bbde4b7b959faf584a9e669addab8257767731011ee9b03a854ed2baab01
 vendor/lib/libdatamod.so|64a046480dacde9869e1b60a5ac41c043a577f5f7fdfdb5ab5a33840f83cb931
 
 
@@ -148,10 +146,6 @@ vendor/lib64/libhwc2on1adapter.so
 vendor/lib64/libhwc2onfbadapter.so
 vendor/lib64/libion_exynos.so
 vendor/lib64/libmpp.so
-
-# Hotword Enrollment
--priv-app/HotwordEnrollmentOKGoogleExCORTEXM4/HotwordEnrollmentOKGoogleExCORTEXM4.apk;PRESIGNED
--priv-app/HotwordEnrollmentXGoogleExCORTEXM4/HotwordEnrollmentXGoogleExCORTEXM4.apk;PRESIGNED
 
 # Keymaster
 lib/libskeymaster.so
