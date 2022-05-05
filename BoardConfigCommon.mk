@@ -158,6 +158,3 @@ ENABLE_VENDOR_RIL_SERVICE := true
 TARGET_LD_SHIM_LIBS += \
     /system/lib/libexynoscamera.so|/vendor/lib/libexynoscamera_shim.so \
     /system/lib64/libexynoscamera.so|/vendor/lib64/libexynoscamera_shim.so
-
-# Soong namespaces
-PRODUCT_SOONG_NAMESPACES += $(COMMON_PATH)

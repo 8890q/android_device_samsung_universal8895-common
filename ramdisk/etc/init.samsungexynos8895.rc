@@ -180,6 +180,7 @@ on boot
     chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost
     chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost
+    chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/interactive/input_boost
     chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/interactive/input_boost
@@ -209,6 +210,7 @@ on boot
     chown system system /sys/devices/system/cpu/cpu4/cpufreq/interactive/boost
     chmod 0660 /sys/devices/system/cpu/cpu4/cpufreq/interactive/boost
     chown system system /sys/devices/system/cpu/cpu4/cpufreq/interactive/boostpulse
+    chmod 0660 /sys/devices/system/cpu/cpu4/cpufreq/interactive/boostpulse
     chown system system /sys/devices/system/cpu/cpu4/cpufreq/interactive/input_boost
     chmod 0660 /sys/devices/system/cpu/cpu4/cpufreq/interactive/input_boost
     chown system system /sys/devices/system/cpu/cpu4/cpufreq/interactive/boostpulse_duration
