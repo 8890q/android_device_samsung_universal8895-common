@@ -2,7 +2,6 @@
 etc/apns-conf.xml
 
 # Audio
-lib/hw/audio.playback_record.default.so|fddd33c38df9a23f274a31aed97218114abaa7e7efbc6b13e187fcf5eaac5cae
 lib/hw/audio.primary.exynos8895.so|a67fccd9fd0ad77cf3bbfe7877f0d47fcd60bc70554bf027de3d4b3673c43bf3
 lib/libSamsungPostProcessConvertor.so|5e2a6ee980f6c3a57321fe4c982d9796e085549f00ba73908affb47cfaa69cd9
 lib/lib_SamsungRec_06006.so|0006c12aa0632099a49bb1b024bcf11049d4e73735a009723ff96976af8ce1c7
