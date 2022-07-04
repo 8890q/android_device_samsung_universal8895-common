@@ -138,7 +138,7 @@ vendor/lib64/hw/hwcomposer.exynos5.so
 vendor/lib64/libExynosHWCService.so
 vendor/lib64/libRSDriverArm.so
 vendor/lib64/libcsc.so
-vendor/lib64/libexynosdisplay.so
+vendor/lib64/libexynosdisplay.so|4d8b1877d2f0df185a10af996cc5e0bc1b663aa1
 vendor/lib64/libexynosutils.so
 vendor/lib64/libexynosv4l2.so
 vendor/lib64/libhwc2on1adapter.so
