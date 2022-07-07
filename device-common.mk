@@ -287,7 +287,8 @@ PRODUCT_SOONG_NAMESPACES += \
 # Shims
 PRODUCT_PACKAGES += \
     libaudioparams_shim \
-    libexynoscamera_shim
+    libexynoscamera_shim \
+    libexynosdisplay_shim
 
 # stagefright
 PRODUCT_PACKAGES += \
