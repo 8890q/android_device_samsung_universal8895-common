@@ -2,8 +2,8 @@ on init
     mount configfs none /sys/kernel/config
     mkdir /sys/kernel/config/usb_gadget/g1
     mkdir /sys/kernel/config/usb_gadget/g1/strings/0x409
-    mkdir /sys/kernel/config/usb_gadget/g1/configs/c.1
-    mkdir /sys/kernel/config/usb_gadget/g1/configs/c.1/strings/0x409
+    mkdir /sys/kernel/config/usb_gadget/g1/configs/b.1
+    mkdir /sys/kernel/config/usb_gadget/g1/configs/b.1/strings/0x409
     mkdir /sys/kernel/config/usb_gadget/g1/functions/mtp.0
     mkdir /sys/kernel/config/usb_gadget/g1/functions/ptp.0
     mkdir /sys/kernel/config/usb_gadget/g1/functions/acm.0
@@ -21,31 +21,52 @@ on init
 
 on boot
     write /sys/kernel/config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
-    write /sys/kernel/config/usb_gadget/g1/strings/0x409/manufacturer "SAMSUNG"
-    write /sys/kernel/config/usb_gadget/g1/strings/0x409/product "SAMSUNG_Android"
-    write /sys/kernel/config/usb_gadget/g1/configs/c.1/strings/0x409/configuration "Conf 1"
-    write /sys/kernel/config/usb_gadget/g1/configs/c.1/MaxPower 0x3f
-    symlink /sys/kernel/config/usb_gadget/g1/functions/mtp.0 /sys/kernel/config/usb_gadget/g1/configs/c.1/mtp.0
-    symlink /sys/kernel/config/usb_gadget/g1/functions/ptp.0 /sys/kernel/config/usb_gadget/g1/configs/c.1/ptp.0
-    symlink /sys/kernel/config/usb_gadget/g1/functions/ffs.adb /sys/kernel/config/usb_gadget/g1/configs/c.1/ffs.adb
-    symlink /sys/kernel/config/usb_gadget/g1/functions/acm.0 /sys/kernel/config/usb_gadget/g1/configs/c.1/acm.0
-    symlink /sys/kernel/config/usb_gadget/g1/functions/rndis.0 /sys/kernel/config/usb_gadget/g1/configs/c.1/rndis.0
-    symlink /sys/kernel/config/usb_gadget/g1/functions/dm.0 /sys/kernel/config/usb_gadget/g1/configs/c.1/dm.0
-    symlink /sys/kernel/config/usb_gadget/g1/functions/conn_gadget.0 /sys/kernel/config/usb_gadget/g1/configs/c.1/conn_gadget.0
-    symlink /sys/kernel/config/usb_gadget/g1/functions/midi.0 /sys/kernel/config/usb_gadget/g1/configs/c.1/midi.0
-    symlink /sys/kernel/config/usb_gadget/g1/functions/accessory.0 /sys/kernel/config/usb_gadget/g1/configs/c.1/accessory.0
-    symlink /sys/kernel/config/usb_gadget/g1/functions/audio_source.0 /sys/kernel/config/usb_gadget/g1/configs/c.1/audio_source.0
-    symlink /sys/kernel/config/usb_gadget/g1/functions/ncm.0 /sys/kernel/config/usb_gadget/g1/configs/c.1/ncm.0
-    setprop sys.usb.configfs 1
+    write /sys/kernel/config/usb_gadget/g1/strings/0x409/manufacturer ${ro.product.vendor.manufacturer}
+    write /sys/kernel/config/usb_gadget/g1/strings/0x409/product ${ro.product.vendor.model}
+    write /sys/kernel/config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "Conf 1"
+    write /sys/kernel/config/usb_gadget/g1/configs/b.1/MaxPower 0x3f
+    symlink /sys/kernel/config/usb_gadget/g1/functions/mtp.0 /sys/kernel/config/usb_gadget/g1/configs/b.1/mtp.0
+    symlink /sys/kernel/config/usb_gadget/g1/functions/ptp.0 /sys/kernel/config/usb_gadget/g1/configs/b.1/ptp.0
+    symlink /sys/kernel/config/usb_gadget/g1/functions/ffs.adb /sys/kernel/config/usb_gadget/g1/configs/b.1/ffs.adb
+    symlink /sys/kernel/config/usb_gadget/g1/functions/acm.0 /sys/kernel/config/usb_gadget/g1/configs/b.1/acm.0
+    symlink /sys/kernel/config/usb_gadget/g1/functions/rndis.0 /sys/kernel/config/usb_gadget/g1/configs/b.1/rndis.0
+    symlink /sys/kernel/config/usb_gadget/g1/functions/dm.0 /sys/kernel/config/usb_gadget/g1/configs/b.1/dm.0
+    symlink /sys/kernel/config/usb_gadget/g1/functions/conn_gadget.0 /sys/kernel/config/usb_gadget/g1/configs/b.1/conn_gadget.0
+    symlink /sys/kernel/config/usb_gadget/g1/functions/midi.0 /sys/kernel/config/usb_gadget/g1/configs/b.1/midi.0
+    symlink /sys/kernel/config/usb_gadget/g1/functions/accessory.0 /sys/kernel/config/usb_gadget/g1/configs/b.1/accessory.0
+    symlink /sys/kernel/config/usb_gadget/g1/functions/audio_source.0 /sys/kernel/config/usb_gadget/g1/configs/b.1/audio_source.0
+    symlink /sys/kernel/config/usb_gadget/g1/functions/ncm.0 /sys/kernel/config/usb_gadget/g1/configs/b.1/ncm.0
+    setprop sys.usb.configfs 2
 
 on charger && property:ro.debuggable=1
     write /sys/kernel/config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
-    write /sys/kernel/config/usb_gadget/g1/strings/0x409/manufacturer "SAMSUNG"
-    write /sys/kernel/config/usb_gadget/g1/strings/0x409/product "SAMSUNG_Android_lpm"
-    write /sys/kernel/config/usb_gadget/g1/configs/c.1/strings/0x409/configuration "Conf 1"
-    symlink /sys/kernel/config/usb_gadget/g1/functions/ffs.adb /sys/kernel/config/usb_gadget/g1/configs/c.1/ffs.adb
-    setprop sys.usb.configfs 1
+    write /sys/kernel/config/usb_gadget/g1/strings/0x409/manufacturer ${ro.product.vendor.manufacturer}
+    write /sys/kernel/config/usb_gadget/g1/strings/0x409/product ${ro.product.vendor.model}
+    write /sys/kernel/config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "Conf 1"
+    symlink /sys/kernel/config/usb_gadget/g1/functions/ffs.adb /sys/kernel/config/usb_gadget/g1/configs/b.1/ffs.adb
+    setprop sys.usb.configfs 2
     setprop sys.usb.config adb
+
+# Used to disable USB when switching states
+on property:sys.usb.config=none
+    write /sys/class/android_usb/android0/enable 0
+    stop adbd
+    setprop sys.usb.ffs.ready 0
+    write /sys/kernel/config/usb_gadget/g1/bDeviceClass 0
+    write /sys/kernel/config/usb_gadget/g1/bDeviceSubClass 0
+    write /sys/kernel/config/usb_gadget/g1/bDeviceProtocol 0
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=adb
+    start adbd
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/kernel/config/usb_gadget/g1/idProduct 0x685d
+    write /sys/kernel/config/usb_gadget/g1/idVendor 0x04e8
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=mtp
     write /sys/class/android_usb/android0/enable 0
@@ -306,7 +327,7 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=vzw_charging,adb
     write /sys/class/android_usb/android0/enable 0
     write /sys/kernel/config/usb_gadget/g1/idVendor 0x04e8
     write /sys/kernel/config/usb_gadget/g1/idProduct 0x6860
-    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/functions mtp,acm,conn_gadget
     write /sys/kernel/config/usb_gadget/g1/bDeviceClass 0
     write /sys/kernel/config/usb_gadget/g1/UDC "10c00000.dwc3"
     write /sys/class/android_usb/android0/enable 1
@@ -318,129 +339,116 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=mtp,conn_gadget,adb
     write /sys/class/android_usb/android0/enable 0
     write /sys/kernel/config/usb_gadget/g1/idVendor 0x04e8
     write /sys/kernel/config/usb_gadget/g1/idProduct 0x6860
-    write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/kernel/config/usb_gadget/g1/bDeviceClass 0
-    write /sys/kernel/config/usb_gadget/g1/UDC "10c00000.dwc3"
-    write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state ${sys.usb.config}
-
-on property:sys.usb.config=adb
-    start adbd
-
-on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb
-    write /sys/class/android_usb/android0/enable 0
-    write /sys/kernel/config/usb_gadget/g1/idVendor 0x18D1
-    write /sys/kernel/config/usb_gadget/g1/idProduct 0x4EE7
-    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/functions mtp,acm,conn_gadget,adb
     write /sys/kernel/config/usb_gadget/g1/bDeviceClass 0
     write /sys/kernel/config/usb_gadget/g1/UDC "10c00000.dwc3"
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
 # USB accessory configuration
-on property:sys.usb.config=accessory && property:sys.usb.configfs=1
+on property:sys.usb.config=accessory
     write /sys/class/android_usb/android0/enable 0
     write /sys/kernel/config/usb_gadget/g1/idProduct 0x2d00
     write /sys/kernel/config/usb_gadget/g1/idVendor 0x18d1
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/kernel/config/usb_gadget/g1/UDC "10c00000.dwc3"
+    write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
 # USB accessory configuration, with adb
-on property:sys.usb.config=accessory,adb && property:sys.usb.configfs=1
+on property:sys.usb.config=accessory,adb
     start adbd
-on property:sys.usb.ffs.ready=1 && property:sys.usb.config=accessory,adb && property:sys.usb.configfs=1
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=accessory,adb
     write /sys/class/android_usb/android0/enable 0
     write /sys/kernel/config/usb_gadget/g1/idProduct 0x2d01
     write /sys/kernel/config/usb_gadget/g1/idVendor 0x18d1
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/kernel/config/usb_gadget/g1/UDC "10c00000.dwc3"
+    write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
 # audio accessory configuration
-on property:sys.usb.config=audio_source && property:sys.usb.configfs=1
+on property:sys.usb.config=audio_source
     write /sys/class/android_usb/android0/enable 0
     write /sys/kernel/config/usb_gadget/g1/idProduct 0x2d02
     write /sys/kernel/config/usb_gadget/g1/idVendor 0x18d1
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/kernel/config/usb_gadget/g1/UDC "10c00000.dwc3"
+    write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
 # audio accessory configuration, with adb
-on property:sys.usb.config=audio_source,adb && property:sys.usb.configfs=1
+on property:sys.usb.config=audio_source,adb
     start adbd
-on property:sys.usb.ffs.ready=1 && property:sys.usb.config=audio_source,adb && property:sys.usb.configfs=1
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=audio_source,adb
     write /sys/class/android_usb/android0/enable 0
     write /sys/kernel/config/usb_gadget/g1/idProduct 0x2d03
     write /sys/kernel/config/usb_gadget/g1/idVendor 0x18d1
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/kernel/config/usb_gadget/g1/UDC "10c00000.dwc3"
+    write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
 # USB and audio accessory configuration
-on property:sys.usb.config=accessory,audio_source && property:sys.usb.configfs=1
+on property:sys.usb.config=accessory,audio_source
     write /sys/class/android_usb/android0/enable 0
     write /sys/kernel/config/usb_gadget/g1/idProduct 0x2d04
     write /sys/kernel/config/usb_gadget/g1/idVendor 0x18d1
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/kernel/config/usb_gadget/g1/UDC "10c00000.dwc3"
+    write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
 # USB and audio accessory configuration, with adb
-on property:sys.usb.config=accessory,audio_source,adb && property:sys.usb.configfs=1
+on property:sys.usb.config=accessory,audio_source,adb
     start adbd
-on property:sys.usb.ffs.ready=1 && property:sys.usb.config=accessory,audio_source,adb && property:sys.usb.configfs=1
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=accessory,audio_source,adb
     write /sys/class/android_usb/android0/enable 0
     write /sys/kernel/config/usb_gadget/g1/idProduct 0x2d05
     write /sys/kernel/config/usb_gadget/g1/idVendor 0x18d1
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/kernel/config/usb_gadget/g1/UDC "10c00000.dwc3"
+    write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
-on property:sys.usb.config=midi && property:sys.usb.configfs=1
+on property:sys.usb.config=midi
     write /sys/class/android_usb/android0/enable 0
     write /sys/kernel/config/usb_gadget/g1/idProduct 0x686C
     write /sys/kernel/config/usb_gadget/g1/idVendor 0x04e8
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/kernel/config/usb_gadget/g1/UDC "10c00000.dwc3"
+    write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
-on property:sys.usb.config=midi,adb && property:sys.usb.configfs=1
+on property:sys.usb.config=midi,adb
     start adbd
-on property:sys.usb.ffs.ready=1 && property:sys.usb.config=midi,adb && property:sys.usb.configfs=1
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=midi,adb
     write /sys/class/android_usb/android0/enable 0
     write /sys/kernel/config/usb_gadget/g1/idProduct 0x686C
     write /sys/kernel/config/usb_gadget/g1/idVendor 0x04e8
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/kernel/config/usb_gadget/g1/UDC "10c00000.dwc3"
+    write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
- on property:sys.usb.config=ncm && property:sys.usb.configfs=1
+ on property:sys.usb.config=ncm
     write /sys/class/android_usb/android0/enable 0
     write /sys/kernel/config/usb_gadget/g1/idProduct 0x685d
     write /sys/kernel/config/usb_gadget/g1/idVendor 0x04e8
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/kernel/config/usb_gadget/g1/bDeviceClass 2
-    write /sys/kernel/config/usb_gadget/g1/UDC "10c00000.dwc3"
+    write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
-on property:sys.usb.config=ncm,adb && property:sys.usb.configfs=1
+on property:sys.usb.config=ncm,adb
     start adbd
-on property:sys.usb.ffs.ready=1 && property:sys.usb.config=ncm,adb && property:sys.usb.configfs=1
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=ncm,adb
     write /sys/class/android_usb/android0/enable 0
     write /sys/kernel/config/usb_gadget/g1/idProduct 0x685d
     write /sys/kernel/config/usb_gadget/g1/idVendor 0x04e8
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/kernel/config/usb_gadget/g1/bDeviceClass 2
-    write /sys/kernel/config/usb_gadget/g1/UDC "10c00000.dwc3"
+    write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}

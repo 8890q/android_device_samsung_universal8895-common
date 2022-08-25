@@ -105,7 +105,6 @@
         <item>"/system/framework/services.jar"</item>
         <item>"/apex/com.android.art/javalib/core-oj.jar"</item>
         <item>"/apex/com.android.art/javalib/core-libart.jar"</item>
-        <item>"/apex/com.android.media/javalib/updatable-media.jar"</item>
         <item>"/system_ext/priv-app/SystemUI/SystemUI.apk"</item>
         <item>"/system/bin/surfaceflinger"</item>
     </string-array>
@@ -339,4 +338,8 @@
          For this time after the screen turns on, the Power Manager
          will not debounce light sensor readings -->
     <integer name="config_lightSensorWarmupTime">200</integer>
+
+    <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
+         in hardware. -->
+    <bool name="config_setColorTransformAccelerated">false</bool>
 </resources>

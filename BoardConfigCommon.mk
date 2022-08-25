@@ -78,6 +78,8 @@ TARGET_KERNEL_ADDITIONAL_FLAGS := \
     HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 
 # Kernel
+TARGET_KERNEL_CLANG_COMPILE := false
+TARGET_KERNEL_LLVM_BINUTILS := false
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 
@@ -140,6 +142,7 @@ WIFI_DRIVER_FW_PATH_STA          := "/vendor/etc/wifi/bcmdhd_sta.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/vendor/etc/wifi/bcmdhd_apsta.bin"
 WIFI_BAND                        := 802_11_ABG
 WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
+WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
 # MACLOADER
 BOARD_HAVE_SAMSUNG_WIFI          := true
@@ -157,7 +160,11 @@ ENABLE_VENDOR_RIL_SERVICE := true
 # Shims
 TARGET_LD_SHIM_LIBS += \
     /system/lib/libexynoscamera.so|/vendor/lib/libexynoscamera_shim.so \
-    /system/vendor/lib64/libexynoscamera.so|/vendor/lib64/libexynoscamera_shim.so \
+    /system/lib64/libexynoscamera.so|/vendor/lib64/libexynoscamera_shim.so \
+    /system/lib/libblurdetection_interface.so|/vendor/lib/idev0_shim.so \
+    /system/lib64/libblurdetection_interface.so|/vendor/lib64/idev0_shim.so \
+    /system/lib/libfocuspeaking_interface.so|/vendor/lib/idev0_shim.so \
+    /system/lib64/libfocuspeaking_interface.so|/vendor/lib64/idev0_shim.so \
     /system/vendor/lib64/libexynosdisplay.so|/system/vendor/lib64/libexynosdisplay_shim.so \
     /system/vendor/lib/libexynosdisplay.so|/system/vendor/lib/libexynosdisplay_shim.so \
     /system/vendor/lib64/hw/hwcomposer.exynos5.so|/system/vendor/lib64/libexynosdisplay_shim.so \

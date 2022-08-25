@@ -24,16 +24,16 @@ DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio.service_8895 \
-    android.hardware.audio@5.0-impl:32 \
-    android.hardware.audio.effect@5.0-impl:32 \
-    android.hardware.audio.effect@5.0-service \
+    android.hardware.audio@7.1-impl:32 \
+    android.hardware.audio.effect@7.0-impl:32 \
+    android.hardware.bluetooth.audio@2.0-impl \
+    audio.bluetooth.default \
     audio.r_submix.default \
     audio.usb.default \
     libalsautils \
     libeffects \
     libspeexresampler \
     libaudioutils \
-    audio.a2dp.default \
     libtinycompress
 
 PRODUCT_PACKAGES += \
@@ -45,7 +45,8 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(COMMON_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
     $(COMMON_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
-    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration_7_0.xml \
+    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration_7_0.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
@@ -53,6 +54,11 @@ PRODUCT_COPY_FILES += \
 # Additional native libraries
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-impl:64 \
+    android.hardware.bluetooth@1.0-service
 
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
@@ -76,6 +82,7 @@ PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 # Camera
 PRODUCT_PACKAGES += \
     camera.universal8895 \
+    idev0_shim \
     android.hardware.camera.provider@2.5-service
 
 # Camera configurations
@@ -235,6 +242,7 @@ PRODUCT_COPY_FILES += \
 # ramdisk
 PRODUCT_PACKAGES += \
     fstab.samsungexynos8895 \
+    init.recovery.samsungexynos8895.rc \
     init.baseband.rc \
     init.samsung.rc \
     init.vendor.rilcommon.rc \
@@ -302,17 +310,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/samsung-sec_e-pen.idc:system/usr/idc/sec_e-pen.idc
 
-# TextClassifier
-PRODUCT_PACKAGES += \
-    textclassifier.bundle1
-
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.basic
+    android.hardware.usb@1.3-service.samsung
 
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -323,15 +327,13 @@ PRODUCT_COPY_FILES += \
     prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-core/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-lite-v29.so \
     prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-core/libprotobuf-cpp-full.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-full-v29.so \
     prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-core/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libprotobuf-cpp-lite-v29.so \
-    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-core/libprotobuf-cpp-full.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libprotobuf-cpp-full-v29.so
+    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-core/libprotobuf-cpp-full.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libprotobuf-cpp-full-v29.so \
+    prebuilts/vndk/v32/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libutils-v32.so \
+    prebuilts/vndk/v32/arm64/arch-arm-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib/libutils-v32.so
 
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-service.samsung-haptic
-
-# Wi-Fi
-PRODUCT_PACKAGES += \
-    WifiOverlay
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -339,15 +341,16 @@ PRODUCT_PACKAGES += \
     wifiloader \
     hostapd \
     wificond \
-    wifilogd \
-    wlutil \
+    WifiOverlay \
     libwpa_client \
     TetheringConfigOverlay \
     wpa_supplicant \
     wpa_supplicant.conf \
     android.hardware.wifi@1.0-service \
-    android.hardware.wifi@1.0 \
-    android.hardware.wifi@1.0-impl
+    android.hardware.wifi@1.0
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/ramdisk/etc/wifi.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/wifi.rc
 
 # call the proprietary setup
 $(call inherit-product, vendor/samsung/universal8895-common/universal8895-common-vendor.mk)

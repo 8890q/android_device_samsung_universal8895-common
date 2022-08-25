@@ -1,0 +1,11 @@
+on fs
+    setprop sys.usb.ffs.aio_compat 1
+    setprop persist.adb.nonblocking_ffs 0
+    setprop ro.adb.nonblocking_ffs 0
+
+    wait /dev/block/platform/11120000.ufs
+    symlink /dev/block/platform/11120000.ufs /dev/block/bootdevice
+    symlink /dev/block/bootdevice/by-name/BOOT /dev/block/bootdevice/by-name/boot
+    symlink /dev/block/bootdevice/by-name/RECOVERY /dev/block/bootdevice/by-name/recovery
+    symlink /dev/block/bootdevice/by-name/SYSTEM /dev/block/bootdevice/by-name/system
+    symlink /dev/block/bootdevice/by-name/CACHE /dev/block/bootdevice/by-name/cache

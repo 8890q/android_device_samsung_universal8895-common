@@ -63,8 +63,6 @@ extract "${MY_DIR}/proprietary-files.txt" "${SRC}" "${KANG}" --section "${SECTIO
 BLOB_ROOT="$ANDROID_ROOT"/vendor/"$VENDOR"/"$DEVICE_COMMON"/proprietary
 
 sed -i -z "s/    seclabel u:r:gpsd:s0\n//" $BLOB_ROOT/vendor/etc/init/init.gps.rc
-sed -i -z "s/-g@android:wpa_wlan0\n    class main\n/-g@android:wpa_wlan0\n    interface android.hardware.wifi.supplicant@1.0::ISupplicant default\n    interface android.hardware.wifi.supplicant@1.1::ISupplicant default\n    interface android.hardware.wifi.supplicant@1.2::ISupplicant default\n    interface android.hardware.wifi.supplicant@1.3::ISupplicant default\n    class main\n/" $BLOB_ROOT/vendor/etc/init/wifi.rc
-sed -i -z "s/    setprop wifi.interface wlan0\n\n/    setprop wifi.interface wlan0\n    setprop wifi.concurrent.interface swlan0\n\n/" $BLOB_ROOT/vendor/etc/init/wifi.rc
 
 # gps config
 sed -i "s/XTRA_SERVER_1/LONGTERM_PSDS_SERVER_1/" $BLOB_ROOT/etc/gps_debug.conf
@@ -80,24 +78,24 @@ sed -i 's/str_parms_get_str/str_parms_get_mod/g' $BLOB_ROOT/lib/hw/audio.primary
 # Audio Drop SoundTrigger HAL
 "${PATCHELF}" --remove-needed libaudio_soundtrigger.so $BLOB_ROOT/lib/hw/audio.primary.exynos8895.so
 
+"${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib64/libexynosdisplay.so
+"${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib/libexynosdisplay.so
+"${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib64/hw/hwcomposer.exynos5.so
+"${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib/hw/hwcomposer.exynos5.so
+
 # Remove libhidltransport dependencie
-"${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib/android.hardware.bluetooth.a2dp@1.0.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib/android.hardware.gnss@1.0.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib/android.hardware.gnss@1.1.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib/libGrallocWrapper.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib/libskeymaster.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib/vendor.samsung.hardware.gnss@1.0.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib/vendor.samsung_slsi.hardware.ExynosHWCServiceTW@1.0.so
-"${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib64/android.hardware.bluetooth.a2dp@1.0.so
-"${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib64/android.hardware.bluetooth@1.0.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib64/android.hardware.gnss@1.0.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib64/android.hardware.gnss@1.1.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib64/libGrallocWrapper.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib64/libskeymaster.so
-"${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib64/vendor.samsung.hardware.bluetooth@1.0.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib64/vendor.samsung.hardware.gnss@1.0.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib64/vendor.samsung_slsi.hardware.ExynosHWCServiceTW@1.0.so
-"${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/vendor/bin/hw/android.hardware.bluetooth@1.0-service
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/vendor/bin/hw/android.hardware.drm@1.1-service.widevine
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/vendor/bin/hw/vendor.samsung.hardware.gnss@1.0-service
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/vendor/bin/hw/vendor.samsung_slsi.hardware.ExynosHWCServiceTW@1.0-service
@@ -106,7 +104,6 @@ sed -i 's/str_parms_get_str/str_parms_get_mod/g' $BLOB_ROOT/lib/hw/audio.primary
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/vendor/lib/libstagefright_omx_vendor.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/vendor/lib/libwvhidl.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/vendor/lib/sensors.sensorhub.so
-"${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/vendor/lib64/hw/android.hardware.bluetooth@1.0-impl.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/vendor/lib64/hw/android.hardware.gnss@1.1-impl.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/vendor/lib64/hw/vendor.samsung.hardware.gnss@1.0-impl.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/vendor/lib64/libskeymaster3device.so
@@ -116,16 +113,12 @@ sed -i 's/str_parms_get_str/str_parms_get_mod/g' $BLOB_ROOT/lib/hw/audio.primary
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/vendor/lib/libsec-ril-dsds.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/vendor/lib/libsec-ril.so
 # Remove libhwbinder dependencie
-"${PATCHELF}" --remove-needed libhwbinder.so $BLOB_ROOT/lib/android.hardware.bluetooth.a2dp@1.0.so
 "${PATCHELF}" --remove-needed libhwbinder.so $BLOB_ROOT/lib/android.hardware.gnss@1.0.so
 "${PATCHELF}" --remove-needed libhwbinder.so $BLOB_ROOT/lib/android.hardware.gnss@1.1.so
 "${PATCHELF}" --remove-needed libhwbinder.so $BLOB_ROOT/lib/vendor.samsung.hardware.gnss@1.0.so
 "${PATCHELF}" --remove-needed libhwbinder.so $BLOB_ROOT/lib/vendor.samsung_slsi.hardware.ExynosHWCServiceTW@1.0.so
-"${PATCHELF}" --remove-needed libhwbinder.so $BLOB_ROOT/lib64/android.hardware.bluetooth.a2dp@1.0.so
-"${PATCHELF}" --remove-needed libhwbinder.so $BLOB_ROOT/lib64/android.hardware.bluetooth@1.0.so
 "${PATCHELF}" --remove-needed libhwbinder.so $BLOB_ROOT/lib64/android.hardware.gnss@1.0.so
 "${PATCHELF}" --remove-needed libhwbinder.so $BLOB_ROOT/lib64/android.hardware.gnss@1.1.so
-"${PATCHELF}" --remove-needed libhwbinder.so $BLOB_ROOT/lib64/vendor.samsung.hardware.bluetooth@1.0.so
 "${PATCHELF}" --remove-needed libhwbinder.so $BLOB_ROOT/lib64/vendor.samsung.hardware.gnss@1.0.so
 "${PATCHELF}" --remove-needed libhwbinder.so $BLOB_ROOT/lib64/vendor.samsung_slsi.hardware.ExynosHWCServiceTW@1.0.so
 "${PATCHELF}" --remove-needed libhwbinder.so $BLOB_ROOT/vendor/bin/hw/android.hardware.drm@1.1-service.widevine

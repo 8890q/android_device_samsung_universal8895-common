@@ -45,13 +45,6 @@ vendor/etc/audio_policy_volumes.xml
 vendor/etc/default_volume_tables.xml
 
 # Bluetooth
-lib/android.hardware.bluetooth.a2dp@1.0.so
-lib64/android.hardware.bluetooth.a2dp@1.0.so
-lib64/android.hardware.bluetooth@1.0.so
-lib64/vendor.samsung.hardware.bluetooth@1.0.so
-vendor/bin/hw/android.hardware.bluetooth@1.0-service
-vendor/etc/init/android.hardware.bluetooth@1.0-service.rc
-vendor/lib64/hw/android.hardware.bluetooth@1.0-impl.so
 vendor/lib64/libbt-vendor.so
 
 # Bluetooth (aptX) - from crosshatch - QP1A.190711.020
@@ -318,7 +311,6 @@ vendor/lib/libstagefright_soft_g711dec.so
 # WiFi
 vendor/bin/hw/macloader
 vendor/bin/hw/mfgloader
-vendor/etc/init/wifi.rc
 vendor/etc/init/wifi_brcm.rc
 vendor/etc/wifi/bcmdhd_clm.blob
 vendor/etc/wifi/bcmdhd_mfg.bin_b0
