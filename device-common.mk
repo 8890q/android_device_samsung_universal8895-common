@@ -23,7 +23,7 @@ DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio.service \
+    android.hardware.audio.service.universal8895 \
     android.hardware.audio@5.0-impl:32 \
     android.hardware.audio.effect@5.0-impl:32 \
     android.hardware.audio.effect@5.0-service \
