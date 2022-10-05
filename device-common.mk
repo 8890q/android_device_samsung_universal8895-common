@@ -309,10 +309,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/samsung-sec_e-pen.idc:system/usr/idc/sec_e-pen.idc
 
-# TextClassifier
-PRODUCT_PACKAGES += \
-    textclassifier.bundle1
-
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
@@ -336,25 +332,19 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-service.samsung-haptic
 
-# Wi-Fi
-PRODUCT_PACKAGES += \
-    WifiOverlay
-
 # Wifi
 PRODUCT_PACKAGES += \
     macloader \
     wifiloader \
     hostapd \
     wificond \
-    wifilogd \
-    wlutil \
+    WifiOverlay \
     libwpa_client \
     TetheringConfigOverlay \
     wpa_supplicant \
     wpa_supplicant.conf \
     android.hardware.wifi@1.0-service \
-    android.hardware.wifi@1.0 \
-    android.hardware.wifi@1.0-impl
+    android.hardware.wifi@1.0
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/ramdisk/etc/wifi.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/wifi.rc
