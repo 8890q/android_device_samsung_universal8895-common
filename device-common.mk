@@ -243,6 +243,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fstab.samsungexynos8895 \
     init.baseband.rc \
+    init.recovery.samsungexynos8895.rc \
     init.samsung.rc \
     init.vendor.rilcommon.rc \
     init.samsungexynos8895.rc \
