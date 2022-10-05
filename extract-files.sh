@@ -78,6 +78,12 @@ sed -i 's/str_parms_get_str/str_parms_get_mod/g' $BLOB_ROOT/lib/hw/audio.primary
 # Audio Drop SoundTrigger HAL
 "${PATCHELF}" --remove-needed libaudio_soundtrigger.so $BLOB_ROOT/lib/hw/audio.primary.exynos8895.so
 
+# HWC wants old libutils
+"${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib64/libexynosdisplay.so
+"${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib/libexynosdisplay.so
+"${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib64/hw/hwcomposer.exynos5.so
+"${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib/hw/hwcomposer.exynos5.so
+
 # Remove libhidltransport dependencie
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib/android.hardware.gnss@1.0.so
 "${PATCHELF}" --remove-needed libhidltransport.so $BLOB_ROOT/lib/android.hardware.gnss@1.1.so
