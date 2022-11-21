@@ -143,7 +143,7 @@
             "Path": "/sys/class/sec/tsp/cmd",
             "Values": [
                 "aod_enable,0",
-                "aod_enable,1",
+                "aod_enable,1"
             ],
             "DefaultIndex": 0,
             "ResetOnInit": false
@@ -153,7 +153,7 @@
             "Path": "/sys/class/sec/tsp/cmd2",
             "Values": [
                 "set_aod_rect,0,0,0,0",
-                "set_aod_rect,1440,2960,0,0",
+                "set_aod_rect,1440,2960,0,0"
             ],
             "DefaultIndex": 0,
             "ResetOnInit": false
