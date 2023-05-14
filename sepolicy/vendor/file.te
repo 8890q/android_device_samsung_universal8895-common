@@ -22,10 +22,11 @@ type proc_swapiness, fs_type, proc_type;
 # data types
 type fingerprintd_vendor_data_file, data_file_type, file_type;
 type mediadrm_data_file, file_type, data_file_type;
+type log_data_file, file_type, data_file_type;
+type snap_data_file, file_type, data_file_type;
 
 # sysfs types
 type sysfs_batteryinfo_charger_writable, sysfs_type, rw_fs_type, fs_type;
-type sysfs_camera_writable, sysfs_type, rw_fs_type, fs_type;
 type sysfs_decon, sysfs_type, r_fs_type, fs_type;
 type sysfs_socinfo, sysfs_type, r_fs_type, fs_type;
 type sysfs_v4l, sysfs_type, r_fs_type, fs_type;
@@ -48,3 +49,4 @@ type sysfs_ss_writable, sysfs_type, rw_fs_type, fs_type;
 type sysfs_usb_writable, sysfs_type, rw_fs_type, fs_type;
 type sysfs_gpu_writable, sysfs_type, rw_fs_type, fs_type;
 type sysfs_info, sysfs_type, r_fs_type, fs_type;
+type sysfs_memboost, sysfs_type, rw_fs_type, fs_type;

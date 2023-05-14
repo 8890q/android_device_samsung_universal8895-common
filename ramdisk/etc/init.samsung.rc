@@ -94,6 +94,9 @@ on post-fs
 
     start scs
 
+    restorecon /data/misc
+    restorecon /data/vendor
+
 on late-fs
     chown system log /data/log/remaining_olog
     chmod 0440 /data/log/remaining_olog

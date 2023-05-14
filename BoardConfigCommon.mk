@@ -155,7 +155,7 @@ BOARD_HAVE_SAMSUNG_WIFI          := true
 include device/lineage/sepolicy/exynos/sepolicy.mk
 BOARD_SEPOLICY_TEE_FLAVOR := mobicore
 include device/samsung_slsi/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += device/samsung/universal8895-common/sepolicy/vendor
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
 # Ril
 ENABLE_VENDOR_RIL_SERVICE := true

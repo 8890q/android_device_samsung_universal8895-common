@@ -1,5 +1,6 @@
 # bluetooth
 persist.bluetooth_fw_ver    u:object_r:bluetooth_prop:s0
+vendor.bluetooth_fw_ver     u:object_r:bluetooth_prop:s0
 ro.bluetooth.tty            u:object_r:bluetooth_prop:s0
 wc_transport.               u:object_r:bluetooth_prop:s0
 
@@ -25,6 +26,13 @@ vendor.nfc.fw.              u:object_r:vendor_nfc_prop:s0
 # RADIO
 persist.ril.                u:object_r:radio_prop:s0
 vendor.gsm.                 u:object_r:vendor_radio_prop:s0
+ro.multisim.simslotcount    u:object_r:vendor_radio_prop:s0
 
 # FACTORY
 ro.factory.factory_binary   u:object_r:vendor_factory_prop:s0
+
+# POWER
+vendor.powerhal.	    u:object_r:vendor_power_prop:s0
+
+# PDA
+ro.build.PDA		    u:object_r:exported_default_prop:s0

@@ -47,6 +47,9 @@
 ####################################
 # data files
 /data/nfc(/.*)?                    u:object_r:nfc_data_file:s0
+/data/vendor/nfc(/.*)?             u:object_r:nfc_data_file:s0
+/data/log(/.*)?			   u:object_r:log_data_file:s0
+/data/snap(/.*)?		   u:object_r:snap_data_file:s0
 
 # drm
 /data/vendor/mediadrm(/.*)?        u:object_r:mediadrm_data_file:s0
@@ -56,75 +59,7 @@
 
 # camera
 /data/camera(/.*)?                 u:object_r:camera_data_file:s0
-
-####################################
-# sysfs files
-/sys/class/power_supply/battery/music         -- u:object_r:sysfs:s0
-/sys/class/devfreq/17000010.devfreq_mif(/.*)? -- u:object_r:sysfs:s0
-
-# gps
-/sys/class/sec/gps/GPS_PWR_EN/value              u:object_r:sysfs_gps:s0
-
-# charger
-/sys/devices/battery/power_supply(/.*)           u:object_r:sysfs_charger:s0
-/sys/class/power_supply/max77865-charger(/.*)    u:object_r:sysfs_charger:s0
-/sys/devices/platform/10940000\.hsi2c/i2c-11/11-003b/power_supply/mfc-charger(/.*) u:object_r:sysfs_charger:s0
-/sys/devices/platform/10970000\.hsi2c/i2c-13/13-0066/max77865-charger/power_supply/otg(/.*)?                  u:object_r:sysfs_charger:s0
-/sys/devices/platform/10970000\.hsi2c/i2c-13/13-0066/max77865-charger/power_supply/max77865-charger(/.*)?     u:object_r:sysfs_charger:s0
-/sys/devices/platform/10970000\.hsi2c/i2c-13/13-0066/max77865-fuelgauge/power_supply/max77865-fuelgauge(/.*)? u:object_r:sysfs_charger:s0
-
-# sec
-/sys/class/sec(/.*)?                          -- u:object_r:sysfs_sec:s0
-
-# virtual
-/sys/devices/virtual(/.*)?                       u:object_r:sysfs_virtual:s0
-
-# iio
-/sys/devices/platform/15b70000\.adc/iio:device[0-9](/.*)?                                       u:object_r:sysfs_iio:s0
-/sys/bus/iio/devices(/.*)?                                                                      u:object_r:sysfs_iio:s0
-
-# Backlight/Notification LED control
-/sys/devices/platform/panel_drv@001/backlight/panel/brightness                                  u:object_r:sysfs_graphics:s0
-/sys/devices/platform/panel_drv@001/backlight/panel/max_brightness                              u:object_r:sysfs_graphics:s0
-
-# camera
-/sys/devices/virtual/camera(/.*)?                                                               u:object_r:sysfs_camera:s0
-
-# rild
-/sys/devices/virtual/misc/multipdp(/.*)                                                         u:object_r:sysfs_multipdp:s0
-
-# mDNIe
-/sys/devices/platform/panel_drv@001/lcd/panel/mdnie/mode                                        u:object_r:sysfs_mdnie:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/mdnie/scenario                                    u:object_r:sysfs_mdnie:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/mdnie/lux                                         u:object_r:sysfs_mdnie:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/mdnie/sensorRGB                                   u:object_r:sysfs_mdnie:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/mdnie/accessibility                               u:object_r:sysfs_mdnie:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/mdnie/night_mode                                  u:object_r:sysfs_mdnie:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/mdnie/mdnie_ldu                                   u:object_r:sysfs_mdnie:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/mdnie/whiteRGB                                    u:object_r:sysfs_mdnie:s0
-
-# input
-/sys/devices/platform/gpio_keys/input/input6(/.*)?                                              u:object_r:sysfs_input:s0
-/sys/devices/platform/hall/input/input7(/.*)?                                                   u:object_r:sysfs_input:s0
-/sys/devices/platform/certify_hall/input/input8(/.*)?                                           u:object_r:sysfs_input:s0
-
-# lcd
-/sys/devices/platform/panel_drv@001/lcd/panel/adaptive_control                                  u:object_r:sysfs_lcd:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/alpm                                              u:object_r:sysfs_lcd:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/dpui                                              u:object_r:sysfs_lcd:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/dpui_dbg                                          u:object_r:sysfs_lcd:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/lcd_type                                          u:object_r:sysfs_lcd:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/lux                                               u:object_r:sysfs_lcd:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/manufacture_code                                  u:object_r:sysfs_lcd:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/temperature                                       u:object_r:sysfs_lcd:s0
-/sys/devices/platform/panel_drv@001/lcd/panel/window_type                                       u:object_r:sysfs_lcd:s0
-
-# modem
-/sys/module/modem_ctrl_ss310ap/parameters/ds_detect                                             u:object_r:sysfs_modem:s0
-
-# ZRAM
-/sys/devices/virtual/block/zram0/mm_stat                                                        u:object_r:sysfs_zram:s0
-
+/data/vendor/camera(/.*)?          u:object_r:camera_data_file:s0
 
 # Lineage hals
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@[0-9]\.[0-9]-service\.universal8895         u:object_r:hal_lineage_livedisplay_sysfs_exec:s0
@@ -136,3 +71,5 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.camera\.provider@[0-9]\.[0-9]-service    u:object_r:hal_camera_default_exec:s0
 /(vendor|system/vendor)/bin/hw/sec\.android\.hardware\.nfc@[0-9]\.[0-9]-service    u:object_r:hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.gnss@[0-9]\.[0-9]-service    u:object_r:hal_gnss_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.audio\.service\.universal8895    u:object_r:hal_audio_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@[0-9]\.[0-9]-service\.universal8895    u:object_r:hal_lineage_touch_default_exec:s0

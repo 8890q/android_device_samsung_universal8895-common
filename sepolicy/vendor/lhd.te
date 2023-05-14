@@ -1,4 +1,7 @@
 allow lhd sysfs_virtual:dir search;
 allow lhd sysfs_virtual:file rw_file_perms;
 allow lhd sysfs_virtual:lnk_file read;
+allow lhd hal_system_suspend_service:service_manager find;
+binder_call(lhd, servicemanager)
 allow lhd efs_file:dir search;
+allow lhd netd:unix_stream_socket connectto;
