@@ -9,6 +9,8 @@
 
 /dev/cpuset(/.*)?           u:object_r:cgroup:s0
 
+/dev/s5p-smem		    u:object_r:secmem_device:s0
+
 # camera
 /dev/m2m1shot_scaler0       u:object_r:m2m1shot_device:s0
 
