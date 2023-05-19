@@ -27,6 +27,11 @@ on init
     #Google FRP solution
     symlink /dev/block/platform/11120000.ufs/by-name/PERSISTENT /dev/block/persistent
 
+    #Param
+    symlink /dev/block/platform/11120000.ufs/by-name/PARAM /dev/block/param
+
+    symlink /dev/block/platform/11120000.ufs /dev/block/bootdevice
+
 on post-fs
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
