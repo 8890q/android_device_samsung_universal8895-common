@@ -72,7 +72,6 @@ on post-fs-data
 # Directories for audio
     mkdir /data/log/abox 0771 audioserver system
     mkdir /data/vendor/log/abox 0771 audioserver system
-    mkdir /data/firmware 0770 audioserver system
     mkdir /efs/maxim 0770 audioserver audio
 
 # NFC: create data/nfc for nv storage
@@ -82,7 +81,7 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
 # Permissions Camera
-    mkdir /data/camera 0770 cameraserver system
+    mkdir /data/vendor/camera 0770 cameraserver system
     chown cameraserver cameraserver /sys/kernel/mm/vmscan/mem_boost_mode
     chown system radio /sys/class/camera/rear/rear_camfw
     chown system radio /sys/class/camera/rear/rear_camfw_full
@@ -345,15 +344,6 @@ on boot
 
     chown system system /d/asv_summary
     chmod 0660 /d/asv_summary
-
-# Support DM logging
-#    chmod 0770 /system/bin/dmd
-
-# Support Virtual Com
-    chmod 0770 /system/bin/vcd
-
-# Support AP/CP log dump
-#    chmod 0770 /system/bin/sced
 
 # Permission for UART SWITCH
     chmod 0660 /sys/class/sec/switch/uart_sel
