@@ -20,7 +20,7 @@ genfscon sysfs /class/input/input6                u:object_r:sysfs_sensors:s0
 genfscon sysfs /class/video4linux                 u:object_r:sysfs_v4l:s0
 
 # devices
-genfscon sysfs /devices/virtual/sec/led/led_blink                                 u:object_r:sysfs_graphics:s0
+genfscon sysfs /devices/virtual/sec/led/                                          u:object_r:sysfs_graphics:s0
 genfscon sysfs /devices/platform/108e0000.hsi2c/i2c-5/5-0049/input/               u:object_r:sysfs_touchscreen_writable:s0
 genfscon sysfs /devices/platform/108e0000.hsi2c/i2c-5/5-0048/input/		  u:object_r:sysfs_touchscreen_writable:s0
 genfscon sysfs /devices/platform/108e0000.hsi2c/i2c-8/8-0048/input/		  u:object_r:sysfs_touchscreen_writable:s0
@@ -78,7 +78,7 @@ genfscon sysfs /devices/virtual/camera                       u:object_r:sysfs_ca
 genfscon sysfs /devices/virtual/input/                       u:object_r:sysfs_sensors_writable:s0
 
 genfscon sysfs /devices/virtual/sec/sensorhub/mcu_power             u:object_r:sysfs_sensorhub_writable:s0
-genfscon sysfs /devices/virtual/usb_notify/usb_control/usb_hw_param u:object_r:sysfs_usb_writable:s0
+genfscon sysfs /devices/virtual/usb_notify/usb_control/		    u:object_r:sysfs_usb_writable:s0
 
 genfscon sysfs /firmware/devicetree/base/argos                 u:object_r:sysfs_argos:s0
 genfscon sysfs /firmware/devicetree/base/model_info-system_rev u:object_r:sysfs_info:s0
