@@ -169,14 +169,6 @@ on post-fs-data
     #start CASS
     start cass
 
-    # CAS key data
-    mkdir /data/.cas 0771
-    chown media system /data/.cas
-    chmod 0771 /data/.cas
-
-    # barnswallow Daemon socket
-    mkdir /dev/socket/bsd 0770 system system
-
     # eRR.p
     chown root system /efs/lpm_boot.log
     chmod 0660 /efs/lpm_boot.log
@@ -196,53 +188,18 @@ on post-fs-data
     mkdir /data/hostapd 0770 system wifi
 
     # give system access to wpa_supplicant.conf for backup and restore
-    mkdir /data/misc/wifi 0770 wifi system
-    mkdir /data/misc/wifi_share_profile 0771 wifi system
-    mkdir /data/misc/wifi_hostapd 0771 wifi system    
-
     mkdir /data/log/wifi/ 0775 system root
-    mkdir /data/misc/dhcp 0775 dhcp dhcp
-    mkdir /data/misc/reboot 0700 system system
     chown dhcp dhcp /data/misc/dhcp
     chown system system /sys/kernel/ipv4/tcp_delack_seg
 
     # Wi-Fi temporary log Directory for Android Global DE policy
-    mkdir /data/wifi/ 0770 system root
-
-    # for WIFI Antenna
-    write /data/misc/conn/.wificable.info E
-    chown system root /data/misc/conn/.wificable.info
     chmod 0666 /data/misc/conn/.wificable.info
-    
-# [ SEC_PRODUCT_FEATURE_SECURITY_SUPPORT_FIVE
-    mkdir /data/misc/integrity 0775 system system
-# ] SEC_PRODUCT_FEATURE_SECURITY_SUPPORT_FIVE
-	
-# [ SEC_SELINUX_PORTING_COMMON
-    mkdir /data/misc/audit 0775 system system
-    chown system system /data/misc/audit/audit.log
-    chown system system /data/misc/audit/audit.old
-
-    # arcounter
-    mkdir /data/misc/arcounter 0700 system system
-
-    # start auditd
-    start auditd
-# ] SEC_SELINUX_PORTING_COMMON
-
-# [ SEC_AASA_ASKS_PORTING
-    # Seperate location for storing security policy files on data
-    mkdir /data/security 0701 system system
-# ] SEC_AASA_ASKS_PORTING
 
     # create mediacodec folder
     mkdir /data/vendor/media 0770 mediacodec mediacodec
 
     # Samsung Pay
     # mkdir /efs/pfw_data 0760 spay spay
-
-    # Linux On Dex
-    mkdir /data/lxd 0770 root 
 
     # MST/NFC Switch
     # chown spay system /dev/mst_ctrl
@@ -260,16 +217,6 @@ on post-fs-data
     chown system system /sys/class/mstldo/mst_drv/support
     chmod 0444 /sys/class/mstldo/mst_drv/support
 
-    # Downloadable Filter
-    mkdir /data/DownFilters       0775 system system
-    mkdir /data/DownFilters/Lib   0775 system system
-    mkdir /data/DownFilters/Lib64 0775 system system
-    mkdir /data/DownFilters/Res   0775 system system
-    mkdir /data/DownFilters/Tex   0775 system system
-
-    # Open Theme
-    mkdir /data/overlays 0745 system system
-
     # NFC: create /efs/sec_efs/nfc and /efs/nfc for nv storage
     mkdir /efs/sec_efs/nfc 0700 nfc nfc
     mkdir /efs/nfc 0700 nfc nfc
@@ -277,21 +224,12 @@ on post-fs-data
     # NFC: create data/vendor/nfc for nv storage
     mkdir /data/vendor/nfc 0770 nfc nfc
 
-    # TAD
-    mkdir /data/tad 0770 system system
-
-    # FIDO
-    mkdir /data/.fido 0700 system system
-
-    # Samsung font
-    mkdir /data/app_fonts 0775 system system
-
 # [ SEC_SELINUX_PORTING_COMMON
-    exec u:r:vendor_init:s0 root root -- /vendor/bin/toybox_vendor restorecon -RF /efs
-    exec u:r:vendor_init:s0 root root -- /vendor/bin/toybox_vendor restorecon -RF /cpefs
-    exec u:r:vendor_init:s0 root root -- /vendor/bin/toybox_vendor restorecon -RF /mnt/vendor/efs
-    exec u:r:vendor_init:s0 root root -- /vendor/bin/toybox_vendor restorecon -RF /mnt/vendor/cpefs
-    exec u:r:vendor_init:s0 root root -- /vendor/bin/toybox_vendor restorecon -RF /sec_efs
+    restorecon_recursive /efs
+    restorecon_recursive /cpefs
+    restorecon_recursive /mnt/vendor/efs
+    restorecon_recursive /mnt/vendor/cpefs
+    restorecon_recursive /sec_efs
     restorecon_recursive /carrier
     restorecon /sys/kernel/debug/tracing/trace_marker
 # ] SEC_SELINUX_PORTING_COMMON
