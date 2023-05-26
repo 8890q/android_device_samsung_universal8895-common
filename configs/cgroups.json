@@ -2,7 +2,7 @@
   "Cgroups": [
     {
       "Controller": "schedtune",
-      "Path": "/dev/stune",
+      "Path": "/dev/cpuset",
       "Mode": "0755",
       "UID": "system",
       "GID": "system"
