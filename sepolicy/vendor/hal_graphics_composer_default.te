@@ -12,6 +12,8 @@ allow hal_graphics_composer_default cgroup:file getattr;
 # /data/vendor/log/hwc
 allow hal_graphics_composer_default log_vendor_data_file:dir rw_dir_perms;
 allow hal_graphics_composer_default log_vendor_data_file:file create_file_perms;
+allow hal_graphics_composer_default log_data_file:dir rw_dir_perms;
+allow hal_graphics_composer_default log_data_file:file create_file_perms;
 
 # /dev/g2d
 allow hal_graphics_composer_default graphics_device:chr_file rw_file_perms;

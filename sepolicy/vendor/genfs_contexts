@@ -76,6 +76,7 @@ genfscon sysfs /devices/system/chip-id/revision              u:object_r:sysfs_ss
 genfscon sysfs /devices/virtual/android_usb/android0         u:object_r:sysfs_android_usb:s0
 genfscon sysfs /devices/virtual/camera                       u:object_r:sysfs_camera:s0
 genfscon sysfs /devices/virtual/input/                       u:object_r:sysfs_sensors_writable:s0
+genfscon sysfs /devices/virtual/sensors/hrm_sensor/osc_trim  u:object_r:sysfs_sensors_writable:s0
 
 genfscon sysfs /devices/virtual/sec/sensorhub/mcu_power             u:object_r:sysfs_sensorhub_writable:s0
 genfscon sysfs /devices/virtual/usb_notify/usb_control/		    u:object_r:sysfs_usb_writable:s0

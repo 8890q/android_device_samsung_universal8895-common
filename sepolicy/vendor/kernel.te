@@ -5,6 +5,8 @@ allow kernel efs_file:dir search;
 
 allow kernel device:chr_file { getattr setattr unlink create };
 allow kernel device:blk_file create;
+allow kernel block_device:blk_file { open write };
 allow kernel device:dir create_dir_perms;
+allow kernel device:dir search;
 allow kernel self:capability { mknod };
 allow kernel sysfs_sec_key:dir search;
