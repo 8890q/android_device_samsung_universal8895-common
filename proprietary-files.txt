@@ -272,7 +272,7 @@ vendor/lib/vendor.samsung.hardware.radio@2.0.so|1c976df4082e7829578a9cb48c040706
 vendor/lib/vendor.samsung.hardware.radio@2.1.so|6ce633e09b82f54aabd789ca23a5f1833a232f68
 vendor/lib64/libengmode_client.so|ac3615bb78e4e569841abd804c0278c6de181b2c
 vendor/lib64/libril.so|d81e76523a5a28fdf488fa42c0e1d4a2b15fff19
-vendor/lib64/libsec-ril-dsds.so|ddc49c92278ba494d7d5c1362db91fb981952982
+vendor/lib64/libsec-ril-dsds.so|bc62d7610dc6b5140e7f4ca0af2a6ce9e4162397
 vendor/lib64/libsec-ril.so|f1934f7303c5f3b3c11c3726b271c376f66720c4
 vendor/lib64/libsec_semRil.so|7987ec9be7bf937438c43fc0b9859f6c9b4b5787
 vendor/lib64/libsecnativefeature.so|db918252c537272b99651bee58e6ab017549b623
