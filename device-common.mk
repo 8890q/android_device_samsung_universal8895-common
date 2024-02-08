@@ -21,6 +21,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
+# APEX
+OVERRIDE_TARGET_FLATTEN_APEX := true
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio.service.universal8895 \
@@ -31,6 +34,8 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.usb.default \
     libalsautils \
+    libaudioroute \
+    libminijail_32 \
     libeffects \
     libspeexresampler \
     libaudioutils \

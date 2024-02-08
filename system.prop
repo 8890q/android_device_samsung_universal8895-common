@@ -59,7 +59,6 @@ ro.telephony.default_network=10,10
 
 # Android first shipping level
 ro.product.first_api_level=24
-ro.vndk.version=24
 
 # SoC
 ro.soc.manufacturer=Samsung
