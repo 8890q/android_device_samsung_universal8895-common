@@ -78,6 +78,16 @@ sed -i 's/str_parms_get_str/str_parms_get_mod/g' $BLOB_ROOT/lib/hw/audio.primary
 # Audio Drop SoundTrigger HAL
 "${PATCHELF}" --remove-needed libaudio_soundtrigger.so $BLOB_ROOT/lib/hw/audio.primary.exynos8895.so
 
+# hidlbase legacy hack
+"${PATCHELF}" --replace-needed libhidlbase.so libhidlbase-v32.so $BLOB_ROOT/lib/android.hardware.gnss@1.0.so
+"${PATCHELF}" --replace-needed libhidlbase.so libhidlbase-v32.so $BLOB_ROOT/lib/vendor.samsung.hardware.gnss@1.0.so
+"${PATCHELF}" --replace-needed libhidlbase.so libhidlbase-v32.so $BLOB_ROOT/lib/android.hardware.gnss@1.1.so
+"${PATCHELF}" --replace-needed libhidlbase.so libhidlbase-v32.so $BLOB_ROOT/lib/vendor.samsung_slsi.hardware.ExynosHWCServiceTW@1.0.so
+"${PATCHELF}" --replace-needed libhidlbase.so libhidlbase-v32.so $BLOB_ROOT/lib64/android.hardware.gnss@1.0.so
+"${PATCHELF}" --replace-needed libhidlbase.so libhidlbase-v32.so $BLOB_ROOT/lib64/vendor.samsung.hardware.gnss@1.0.so
+"${PATCHELF}" --replace-needed libhidlbase.so libhidlbase-v32.so $BLOB_ROOT/lib64/android.hardware.gnss@1.1.so
+"${PATCHELF}" --replace-needed libhidlbase.so libhidlbase-v32.so $BLOB_ROOT/lib64/vendor.samsung_slsi.hardware.ExynosHWCServiceTW@1.0.so
+
 # HWC wants old libutils
 "${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib64/libexynosdisplay.so
 "${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib/libexynosdisplay.so
